@@ -51,20 +51,20 @@ public class CategorieController {
 		/*
 		 * Envoi Vue + Modele MVC pour Affichage donnees vue
 		 */
-		return new ModelAndView("/categorie/showAllCategories", "categories", listeCategories);
+		return new ModelAndView("categorie/showAllCategories", "categories", listeCategories);
 	}
 
 	 	@RequestMapping(value = "/categorie/list", method = RequestMethod.GET)
 	    public String list(Model model) throws Exception {
 	        model.addAttribute("categories", categorieService.getAll());
-	        return "/categorie/showAllCategories"; // Afficher la page showAllCategories.html qui se trouve sous /categorie
+	        return "categorie/showAllCategories"; // Afficher la page showAllCategories.html qui se trouve sous /categorie
 	        
 	    }
 
 	  @RequestMapping(value = "/categorie/get/{id}" , method = RequestMethod.GET)
 	    public String get(@PathVariable Long id, Model model) throws Exception {
 	        model.addAttribute("categorieToShow", categorieService.getByIdCateg(id));
-	        return "/categorie/showCategorie"; // Afficher la page showCategorie.html qui se trouve sous /categorie
+	        return "categorie/showCategorie"; // Afficher la page showCategorie.html qui se trouve sous /categorie
 	    }
 	  
 	 
@@ -100,7 +100,7 @@ public class CategorieController {
 	    	} catch (Exception e) {
 				e.printStackTrace();
 			}
-	        return "redirect:/categorie/listAll";
+	        return "redirect:categorie/listAll";
 	    }
 	    
 	    
@@ -110,7 +110,7 @@ public class CategorieController {
 	    public String update(@PathVariable Long id, Model model, final RedirectAttributes redirectAttributes) throws Exception {
 	    	Categorie categorie = categorieService.getByIdCateg(id);
 	        model.addAttribute("categorieForm", categorie);
-	        return "/categorie/addUpdateCategorie";
+	        return "categorie/addUpdateCategorie";
 	    }
 	    
 	    @RequestMapping(value = "/categorie/delete/{id}")
@@ -121,7 +121,7 @@ public class CategorieController {
 	        redirectAttributes.addFlashAttribute("typeAlert", "delete");
 	    	redirectAttributes.addFlashAttribute("msgAlert", "Categorie dont ID : "+id+" a été supprimé.");
 	    	
-	        return "redirect:/categorie/listAll";
+	        return "redirect:categorie/listAll";
 	    }
 	    
 	    @RequestMapping(value = "/categorie/clear")
@@ -132,7 +132,7 @@ public class CategorieController {
 		    	categorieService.deleteCategorie(categorie.getIdCateg());
 			}
 	    	
-	        return "redirect:/produit/listAll";
+	        return "redirect:produit/listAll";
 	    }
  
 }
