@@ -45,11 +45,6 @@ import tn.rnu.isi.service.CommandeRepository;
 import tn.rnu.isi.service.CommandeService;
 import tn.rnu.isi.service.ProduitRepository;
 import tn.rnu.isi.service.ProduitService;
-
-
- 
-
-
  
 @Controller 
 @RequestMapping("/") //make all URL's through this controller relative to /index
@@ -64,7 +59,7 @@ public class IndexController {
 	CategorieService categorieService ;
 	
 	@Autowired
-	CommandeService commandeieService ;
+	CommandeService commandeService ;
 	
 	@Autowired
 	ClientService clientService ;
@@ -102,22 +97,11 @@ public class IndexController {
 	// show new Produit form
 		@RequestMapping(value = "/produit/new", method = RequestMethod.GET)
 		public String showNewProduit(Model model) {
-
 			logger.debug(":::showNewProduit:::");
-
-			Produit produit = new Produit();
-			
-			model.addAttribute("produitForm", produit);
-
-	 
-			 return "produit/addUpdateProduit";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
-
+			Produit produit = new Produit();			
+			model.addAttribute("produitForm", produit);	 
+			 return "/produit/addUpdateProduit";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
 		}
-
-
-	
-		
-	
 				
 	 // show list of All Produit
 		@RequestMapping({"/produit/listAll","produitList"})
@@ -131,26 +115,21 @@ public class IndexController {
 			/*
 			 * Envoi Vue + Modèle MVC pour Affichage données vue
 			 */
-			return new ModelAndView("produit/showAllProduits", "produits", listeProduits);
+			return new ModelAndView("/produit/showAllProduits", "produits", listeProduits);
 		} 
 
 
 
-
+		// show new categorie form
 		@RequestMapping(value = "/categorie/new", method = RequestMethod.GET)
 		public String showNewCategorie(Model model) {
-
 			logger.debug(":::showNewCategorie:::");
-
-			Categorie categorie = new Categorie();
-			
-			model.addAttribute("categorieForm", categorie);
-
-	 
-			 return "categorie/addUpdateCategorie";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
+			Categorie categorie = new Categorie();			
+			model.addAttribute("categorieForm", categorie); 
+			 return "/categorie/addUpdateCategorie";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
 
 		}
-		
+		// show list of All categoris
 		@RequestMapping({"/categorie/listAll","categorieList"})
 		protected ModelAndView lisAllCategories(HttpServletRequest request,
 				HttpServletResponse response) throws Exception {
@@ -158,12 +137,63 @@ public class IndexController {
 			 * Lancement du Service et récupération données en base
 			 */
 			List<Categorie> listeCategories = categorieService.getAll();
-
 			/*
 			 * Envoi Vue + Modèle MVC pour Affichage données vue
 			 */
-			return new ModelAndView("categorie/showAllCategories", "categories", listeCategories);
+			return new ModelAndView("/categorie/showAllCategories", "categories", listeCategories);
 		} 
+		
+	
+		// show new client form
+		@RequestMapping(value = "/client/new", method = RequestMethod.GET)
+		public String showNewClient(Model model) {
+			logger.debug(":::showNewClient:::");
+			Client client = new Client();			
+			model.addAttribute("clientForm", client); 
+			 return "/client/addUpdateClient";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
+
+		}
+		// show list of All client
+		@RequestMapping({"/client/listAll","clientList"})
+		protected ModelAndView lisAllClient(HttpServletRequest request,
+				HttpServletResponse response) throws Exception {
+			/*
+			 * Lancement du Service et récupération données en base
+			 */
+			List<Client> listeClients = clientService.getAll();
+			/*
+			 * Envoi Vue + Modèle MVC pour Affichage données vue
+			 */
+			return new ModelAndView("/client/showAllClients", "categories", listeClients);
+		} 
+		
+		
+		// show new commande form
+		@RequestMapping(value = "/commande/new", method = RequestMethod.GET)
+		public String showNewCommande(Model model) {
+			logger.debug(":::showNewCommande:::");
+			Commande commande = new Commande();			
+			model.addAttribute("commandeForm", commande); 
+			 return "/commande/addUpdateCommande";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
+
+		}
+		// show list of All commande
+		@RequestMapping({"/commande/listAll","commandeList"})
+		protected ModelAndView lisAllCommande(HttpServletRequest request,
+				HttpServletResponse response) throws Exception {
+			/*
+			 * Lancement du Service et récupération données en base
+			 */
+			List<Commande> listeCommandes = commandeService.getAll();
+			/*
+			 * Envoi Vue + Modèle MVC pour Affichage données vue
+			 */
+			return new ModelAndView("/commande/showAllCommande", "commandes", listeCommandes);
+		} 	
+		
+		
+		
+		
 
 	
 }

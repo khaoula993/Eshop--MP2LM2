@@ -48,20 +48,20 @@ public class ClientController {
 		/*
 		 * Envoi Vue + Modele MVC pour Affichage donnees vue
 		 */
-		return new ModelAndView("client/showAllClients", "clients", listeClients);
+		return new ModelAndView("/client/showAllClients", "clients", listeClients);
 	}
 
 	 	@RequestMapping(value = "/client/list", method = RequestMethod.GET)
 	    public String list(Model model) throws Exception {
 	        model.addAttribute("clients", clientService.getAll());
-	        return "client/showAllclients"; // Afficher la page showAllclients.html qui se trouve sous /produit
+	        return "/client/showAllclients"; // Afficher la page showAllclients.html qui se trouve sous /produit
 	        
 	    }
 
 	    @RequestMapping(value = "/client/get/{id}" , method = RequestMethod.GET)
 	    public String get(@PathVariable Long id, Model model) throws Exception {
 	        model.addAttribute("clientToShow", clientService.getByIdClient(id));
-	        return "client/showClient"; // Afficher la page showClient.html qui se trouve sous /client
+	        return "/client/showClient"; // Afficher la page showClient.html qui se trouve sous /client
 	    }
 	    
 	    
@@ -95,7 +95,7 @@ public class ClientController {
 	    	} catch (Exception e) {
 				e.printStackTrace();
 			}
-	        return "redirect:client/listAll";
+	        return "redirect:/client/listAll";
 	    }
 	    
 	    
@@ -105,7 +105,7 @@ public class ClientController {
 	    public String update(@PathVariable Long id, Model model, final RedirectAttributes redirectAttributes) throws Exception {
 	        Client client = clientService.getByIdClient(id);
 	        model.addAttribute("clientForm", client);
-	        return "client/addUpdateClient";
+	        return "/client/addUpdateClient";
 	    }
 	    
 	    @RequestMapping(value = "/client/delete/{id}")
@@ -116,7 +116,7 @@ public class ClientController {
 	        redirectAttributes.addFlashAttribute("typeAlert", "delete");
 	    	redirectAttributes.addFlashAttribute("msgAlert", "Client dont ID : "+id+" a été supprimé.");
 	    	
-	        return "redirect:client/listAll";
+	        return "redirect:/client/listAll";
 	    }
 	    
 	    @RequestMapping(value = "/client/clear")
@@ -127,7 +127,7 @@ public class ClientController {
 		    	clientService.deleteClient(client.getIdClient());
 			}
 	    	
-	        return "redirect:client/listAll";
+	        return "redirect:/client/listAll";
 	    }
  
 }

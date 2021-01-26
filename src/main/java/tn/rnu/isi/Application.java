@@ -30,6 +30,7 @@ import java.util.Locale;
 @EnableAutoConfiguration
 @ComponentScan
 @SpringBootApplication
+@ComponentScan(basePackages={"com.technicalkeeda"})
 public class Application extends SpringBootServletInitializer {
 
 	private static final Logger log = LoggerFactory.getLogger(Application.class);

@@ -56,20 +56,20 @@ public class CommandeController {
 		/*
 		 * Envoi Vue + Modele MVC pour Affichage donnees vue
 		 */
-		return new ModelAndView("commande/showAllCommandes", "commandes", listeCommandes);
+		return new ModelAndView("/commande/showAllCommandes", "commandes", listeCommandes);
 	}
 
 	 	@RequestMapping(value = "/commande/list", method = RequestMethod.GET)
 	    public String list(Model model) throws Exception {
 	        model.addAttribute("commandes", commandeService.getAll());
-	        return "commande/showAllCommandes"; // Afficher la page showAllCommandes.html qui se trouve sous /commande
+	        return "/commande/showAllCommandes"; // Afficher la page showAllCommandes.html qui se trouve sous /commande
 	        
 	    }
 
 	    @RequestMapping(value = "/commande/get/{id}" , method = RequestMethod.GET)
 	    public String get(@PathVariable Long id, Model model) throws Exception {
 	        model.addAttribute("commandeToShow", commandeService.getByIdCommande(id));
-	        return "commande/showCommande"; // Afficher la page showCommande.html qui se trouve sous /commande
+	        return "/commande/showCommande"; // Afficher la page showCommande.html qui se trouve sous /commande
 	    }
 	    
 	    
@@ -103,7 +103,7 @@ public class CommandeController {
 	    	} catch (Exception e) {
 				e.printStackTrace();
 			}
-	        return "redirect:commande/listAll";
+	        return "redirect:/commande/listAll";
 	    }
 	    
 	    
@@ -113,7 +113,7 @@ public class CommandeController {
 	    public String update(@PathVariable Long id, Model model, final RedirectAttributes redirectAttributes) throws Exception {
 	        Commande commande = commandeService.getByIdCommande(id);
 	        model.addAttribute("commandeForm", commande);
-	        return "commande/addUpdatecommande";
+	        return "/commande/addUpdatecommande";
 	    }
 	    
 	    @RequestMapping(value = "/commande/delete/{id}")
@@ -125,7 +125,7 @@ public class CommandeController {
 	        redirectAttributes.addFlashAttribute("typeAlert", "delete");
 	    	redirectAttributes.addFlashAttribute("msgAlert", "Commande dont ID : "+id+" a été supprimé.");
 	    	
-	        return "redirect:commande/listAll";
+	        return "redirect:/commande/listAll";
 	    }
 	    
 	    @RequestMapping(value = "/commande/clear")
@@ -136,7 +136,7 @@ public class CommandeController {
 		    	commandeService.deleteCommande(commande.getIdCommande());
 			}
 	    	
-	        return "redirect:commande/listAll";
+	        return "redirect:/commande/listAll";
 	    }
  
 }
