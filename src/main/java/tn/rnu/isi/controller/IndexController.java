@@ -100,7 +100,7 @@ public class IndexController {
 			logger.debug(":::showNewProduit:::");
 			Produit produit = new Produit();			
 			model.addAttribute("produitForm", produit);	 
-			 return "/produit/addUpdateProduit";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
+			 return "produit/addUpdateProduit";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
 		}
 				
 	 // show list of All Produit
@@ -115,7 +115,7 @@ public class IndexController {
 			/*
 			 * Envoi Vue + Modèle MVC pour Affichage données vue
 			 */
-			return new ModelAndView("/produit/showAllProduits", "produits", listeProduits);
+			return new ModelAndView("produit/showAllProduits", "produits", listeProduits);
 		} 
 
 
@@ -126,7 +126,7 @@ public class IndexController {
 			logger.debug(":::showNewCategorie:::");
 			Categorie categorie = new Categorie();			
 			model.addAttribute("categorieForm", categorie); 
-			 return "/categorie/addUpdateCategorie";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
+			 return "categorie/addUpdateCategorie";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
 
 		}
 		// show list of All categoris
@@ -140,7 +140,7 @@ public class IndexController {
 			/*
 			 * Envoi Vue + Modèle MVC pour Affichage données vue
 			 */
-			return new ModelAndView("/categorie/showAllCategories", "categories", listeCategories);
+			return new ModelAndView("categorie/showAllCategories", "categories", listeCategories);
 		} 
 		
 	
@@ -150,7 +150,7 @@ public class IndexController {
 			logger.debug(":::showNewClient:::");
 			Client client = new Client();			
 			model.addAttribute("clientForm", client); 
-			 return "/client/addUpdateClient";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
+			 return "client/addUpdateClient";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
 
 		}
 		// show list of All client
@@ -164,7 +164,7 @@ public class IndexController {
 			/*
 			 * Envoi Vue + Modèle MVC pour Affichage données vue
 			 */
-			return new ModelAndView("/client/showAllClients", "categories", listeClients);
+			return new ModelAndView("client/showAllClients", "categories", listeClients);
 		} 
 		
 		
@@ -174,7 +174,7 @@ public class IndexController {
 			logger.debug(":::showNewCommande:::");
 			Commande commande = new Commande();			
 			model.addAttribute("commandeForm", commande); 
-			 return "/commande/addUpdateCommande";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
+			 return "commande/addUpdateCommande";// C'est le nom de la page JSP à rediriger (newProduit.jsp)
 
 		}
 		// show list of All commande
@@ -188,7 +188,7 @@ public class IndexController {
 			/*
 			 * Envoi Vue + Modèle MVC pour Affichage données vue
 			 */
-			return new ModelAndView("/commande/showAllCommande", "commandes", listeCommandes);
+			return new ModelAndView("commande/showAllCommande", "commandes", listeCommandes);
 		} 	
 		
 		
