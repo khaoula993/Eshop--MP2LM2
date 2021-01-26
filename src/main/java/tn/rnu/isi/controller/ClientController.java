@@ -95,7 +95,7 @@ public class ClientController {
 	    	} catch (Exception e) {
 				e.printStackTrace();
 			}
-	        return "redirect:client/listAll";
+	        return "redirect:/client/listAll";
 	    }
 	    
 	    
@@ -116,7 +116,7 @@ public class ClientController {
 	        redirectAttributes.addFlashAttribute("typeAlert", "delete");
 	    	redirectAttributes.addFlashAttribute("msgAlert", "Client dont ID : "+id+" a été supprimé.");
 	    	
-	        return "redirect:client/listAll";
+	        return "redirect:/client/listAll";
 	    }
 	    
 	    @RequestMapping(value = "/client/clear")
@@ -127,7 +127,7 @@ public class ClientController {
 		    	clientService.deleteClient(client.getIdClient());
 			}
 	    	
-	        return "redirect:client/listAll";
+	        return "redirect:/client/listAll";
 	    }
  
 }
