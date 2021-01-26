@@ -103,7 +103,7 @@ public class CommandeController {
 	    	} catch (Exception e) {
 				e.printStackTrace();
 			}
-	        return "redirect:commande/listAll";
+	        return "redirect:/commande/listAll";
 	    }
 	    
 	    
