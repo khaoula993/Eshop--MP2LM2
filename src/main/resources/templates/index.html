@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>::: Spring MVC Boot Data JPA Thymleaf Hibernate Bootstrap Jquery :::</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+<meta name="Content-Language" content="fr" />
+<meta name="Description" content="" />
+<meta name="Keywords" content=" Tutoriel Spring MVC-Boot-Data JPA Hibernate Bootstrap Jquery " />
+<meta name="Subject" content="" />
+<meta name="Content-Type" content="utf-8" />
+<style>
+	.box{
+	display: flex;
+  justify-content: space-evenly;
+	}
+</style>
+ <div th:replace="fragments/header :: header-css"/>
+
+</head>
+
+
+<body>
+<br><br><br><br><br>
+<div th:replace="fragments/header :: header"></div>
+
+<div id="page-wrap">
+ <!-- CONTENT -->
+
+<div class="box">
+  <div>
+   <div class="row justify-content-md-center h-100">
+					<div class="card-wrapper">
+					<div class="card fat">
+							<div class="card-body">
+					<h4 class="card-title">Suivi Produits</h4>
+					Total des produits : 	<Strong width="10%" th:text="${produits}"></Strong>
+
+
+	
+	</div>
+	</div>				
+  </div>
+  </div>
+  
+  </div>
+  <div> <div class="row justify-content-md-center h-100">
+					<div class="card-wrapper">
+					<div class="card fat">
+							<div class="card-body">
+					<h4 class="card-title">Suivi Catégories</h4>
+					Total des catégories :   <Strong width="10%" th:text="${categories}"></Strong>
+					</div>
+	</div>				
+  </div>
+  </div></div>
+  <div> <div class="row justify-content-md-center h-100">
+					<div class="card-wrapper">
+					<div class="card fat">
+							<div class="card-body">
+					<h4 class="card-title">Suivi Clients</h4>
+					Total des clients :    <Strong width="10%" th:text="${clients}"></Strong>
+					</div>
+	</div>				
+  </div>
+  </div></div>
+  <div> <div class="row justify-content-md-center h-100">
+					<div class="card-wrapper">
+					<div class="card fat">
+							<div class="card-body">
+					<h4 class="card-title">Suivi Commandes</h4>
+					Total des commandes :   <Strong width="10%" th:text="${commandes}"></Strong>
+					</div> 
+	</div>				
+  </div>
+  </div></div>
+</div>
+</div>
+</body>
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- JavaScript Placed at the end of the document so the pages load faster -->
+  	<script src="../../js/jquery-3.3.1.slim.min.js" th:src="@{/js/jquery-3.3.1.slim.min.js}"></script>
+    <script>window.jQuery || document.write('<script src="../../js/jquery-3.3.1.slim.min.js"><\/script>')</script>
+    
+    <script src="/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+	<script src="/js/popper.min.js" th:src="@{/js/popper.min.js}"></script>
+
+</html>
