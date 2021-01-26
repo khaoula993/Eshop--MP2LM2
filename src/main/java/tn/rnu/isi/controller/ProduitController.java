@@ -49,20 +49,20 @@ public class ProduitController {
 		/*
 		 * Envoi Vue + Modele MVC pour Affichage donnees vue
 		 */
-		return new ModelAndView("/produit/showAllProduits", "produits", listeProduits);
+		return new ModelAndView("produit/showAllProduits", "produits", listeProduits);
 	}
 
 	 	@RequestMapping(value = "/produit/list", method = RequestMethod.GET)
 	    public String list(Model model) throws Exception {
 	        model.addAttribute("produits", produitService.getAll());
-	        return "/produit/showAllProduits"; // Afficher la page showAllProduits.html qui se trouve sous /produit
+	        return "produit/showAllProduits"; // Afficher la page showAllProduits.html qui se trouve sous /produit
 	        
 	    }
 
 	    @RequestMapping(value = "/produit/get/{id}" , method = RequestMethod.GET)
 	    public String get(@PathVariable Long id, Model model) throws Exception {
 	        model.addAttribute("produitToShow", produitService.getByIdProduit(id));
-	        return "/produit/showProduit"; // Afficher la page showProduit.html qui se trouve sous /produit
+	        return "produit/showProduit"; // Afficher la page showProduit.html qui se trouve sous /produit
 	    }
 	    
 	    
@@ -96,7 +96,7 @@ public class ProduitController {
 	    	} catch (Exception e) {
 				e.printStackTrace();
 			}
-	        return "redirect:/produit/listAll";
+	        return "redirect:produit/listAll";
 	    }
 	    
 	    
@@ -106,7 +106,7 @@ public class ProduitController {
 	    public String update(@PathVariable Long id, Model model, final RedirectAttributes redirectAttributes) throws Exception {
 	        Produit produit = produitService.getByIdProduit(id);
 	        model.addAttribute("produitForm", produit);
-	        return "/produit/addUpdateProduit";
+	        return "produit/addUpdateProduit";
 	    }
 	    
 	    @RequestMapping(value = "/produit/delete/{id}")
@@ -117,7 +117,7 @@ public class ProduitController {
 	        redirectAttributes.addFlashAttribute("typeAlert", "delete");
 	    	redirectAttributes.addFlashAttribute("msgAlert", "Produit dont ID : "+id+" a été supprimé.");
 	    	
-	        return "redirect:/produit/listAll";
+	        return "redirect:produit/listAll";
 	    }
 	    
 	    @RequestMapping(value = "/produit/clear")
@@ -128,7 +128,7 @@ public class ProduitController {
 		    	produitService.deleteProduit(produit.getIdProduit());
 			}
 	    	
-	        return "redirect:/produit/listAll";
+	        return "redirect:produit/listAll";
 	    }
  
 }
