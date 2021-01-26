@@ -125,7 +125,7 @@ public class CommandeController {
 	        redirectAttributes.addFlashAttribute("typeAlert", "delete");
 	    	redirectAttributes.addFlashAttribute("msgAlert", "Commande dont ID : "+id+" a été supprimé.");
 	    	
-	        return "redirect:commande/listAll";
+	        return "redirect:/commande/listAll";
 	    }
 	    
 	    @RequestMapping(value = "/commande/clear")
@@ -136,7 +136,7 @@ public class CommandeController {
 		    	commandeService.deleteCommande(commande.getIdCommande());
 			}
 	    	
-	        return "redirect:commande/listAll";
+	        return "redirect:/commande/listAll";
 	    }
  
 }
