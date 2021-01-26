@@ -96,7 +96,7 @@ public class ProduitController {
 	    	} catch (Exception e) {
 				e.printStackTrace();
 			}
-	        return "redirect:produit/listAll";
+	        return "redirect:/produit/listAll";
 	    }
 	    
 	    
@@ -117,7 +117,7 @@ public class ProduitController {
 	        redirectAttributes.addFlashAttribute("typeAlert", "delete");
 	    	redirectAttributes.addFlashAttribute("msgAlert", "Produit dont ID : "+id+" a été supprimé.");
 	    	
-	        return "redirect:produit/listAll";
+	        return "redirect:/produit/listAll";
 	    }
 	    
 	    @RequestMapping(value = "/produit/clear")
@@ -128,7 +128,7 @@ public class ProduitController {
 		    	produitService.deleteProduit(produit.getIdProduit());
 			}
 	    	
-	        return "redirect:produit/listAll";
+	        return "redirect:/produit/listAll";
 	    }
  
 }
