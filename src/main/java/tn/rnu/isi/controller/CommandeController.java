@@ -113,7 +113,7 @@ public class CommandeController {
 	    public String update(@PathVariable Long id, Model model, final RedirectAttributes redirectAttributes) throws Exception {
 	        Commande commande = commandeService.getByIdCommande(id);
 	        model.addAttribute("commandeForm", commande);
-	        return "commande/addUpdatecommande";
+	        return "commande/addUpdateCommande";
 	    }
 	    
 	    @RequestMapping(value = "/commande/delete/{id}")
