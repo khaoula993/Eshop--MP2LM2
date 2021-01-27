@@ -133,8 +133,8 @@
 		  <!-- th:with sert à déclarer des variables locales tels que les URLs -->
 				
 					<td width="5%" th:text="${comd.idCommande}" th:with="id=${comd.idCommande}"></td>
-					<td width="5%" th:text="${comd.produit.idProduit}"></td>
-					<td width="5%" th:text="${comd.client.idClient}"></td>
+					<td width="5%" th:text="${comd.produit.modeleProduit}"></td>
+					<td width="5%" th:text="${comd.client.loginClient}"></td>
 					<td width="10%" th:text="${comd.qteCommande}"></td>
 					<td width="10%" th:text="${comd.dateCommande}"></td>
 					<td width="10%" th:text="${comd.etatCommande}"></td>
