@@ -32,7 +32,8 @@ public class ClientController {
 	@Autowired
 	ClientService clientService;
 	
-	
+	@Autowired
+	CommandeService commandeService;
 	
  
  
