@@ -110,7 +110,7 @@ public class ClientController {
 	    
 	    @RequestMapping(value = "/client/delete/{id}")
 	    public String delete(@PathVariable Long id, final RedirectAttributes redirectAttributes) throws Exception {
-	    	
+	    	commandeService.deleteCommandeByIdClient(id);
 	        clientService.deleteClient(id);
 	        
 	        redirectAttributes.addFlashAttribute("typeAlert", "delete");
